@@ -81,14 +81,16 @@ const selectedUnit = ref(units[0])
 export default {
   data: function() {
     return {
-      selectedUnit: "",
+      selected: "",
       };
   },
   methods: {
     handleChange(){
-        console.log(this.selectedUnit, "selectedUnit", this.selectedUnit.value, "value")
+        this.selected = this.selectedUnit.value
+        console.log(this.selectedUnit, "selectedUnit", this.selected, "value")
+      
 
-        this.$emit("unit-change", this.selectedUnit.value);
+        this.$emit("unit-change", this.selected);
     },
   }
 };
