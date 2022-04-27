@@ -86,6 +86,8 @@ export default {
   },
   methods: {
     handleChange(){
+        console.log(this.selectedUnit, "selectedUnit", this.selectedUnit.value, "value")
+
         this.$emit("unit-change", this.selectedUnit.value);
     },
   }
