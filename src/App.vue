@@ -1,12 +1,14 @@
 <template>
   <div :class="isDark ? 'dark' : ''">
   <div id="background" class="dark:bg-slate-900">
-    <div id="ui">
+    <div id="ui" class="md:w-3/5 mx-auto">
     <div class=" flex flex-col justify-center w-11/12 m-auto">
-      <div class="flex flex-row justify-center items-center	 mx-0 w-full" >
-        <p class="dark:text-slate-200 text-3xl shrink w-3/5 font-extrabold  mx-auto " id="title"> Temperature
+      <div class="flex flex-row justify-around w-11/12 items-center mx-auto" >
+        <div class="w-3/5 justify-start">
+        <p class="dark:text-slate-200 text-3xl font-extrabold  mx-auto text-left" id="title"> Temperature
         </p>
-        <div class="w-2/5 shrink mx-auto justify-end items-center">
+        </div>
+        <div class="w-2/5 justify-end items-center">
         <ToggleButton @dark-toggle="this.isDark = ($event)" class="justify-end items-center	mx-auto"/>
         </div>
       </div>
