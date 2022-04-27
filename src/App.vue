@@ -56,6 +56,7 @@ export default {
   data: ()=>({
     temperature: "--",
     unit: "",
+    input:"",
     temperatureInput: "",
     showResult: false,
     isDark: false
