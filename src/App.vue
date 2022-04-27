@@ -26,7 +26,7 @@
         <div class="flex flex-row justify-around items-center w-full m-0">
           <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0" >
             <label class="dark:text-slate-200 text-left">Input here</label>
-            <input class="w-5/5 border-b-2" @keyup.enter="onEnter" type="tel" maxlength="4" v-model="input" @input="handleInput">
+            <input class="w-5/5 border-b-2" @keyup.enter="onEnter" type="number" v-model="input" @input="handleInput">
           </div>
           <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0 ">
             <label class="text-left dark:text-slate-200">Unit</label>
@@ -67,7 +67,13 @@ export default {
   ,
   methods: {
     handleInput(event){
-      this.temperatureInput = event.target.value.trim()
+     if (event.target.value.length > 5) {
+        event.target.value = event.target.value.slice(0,5); 
+     }
+     if (event.target.value.length === 5) {
+       this.onEnter()
+    }
+     this.temperatureInput = event.target.value.trim()
       console.log(this.temperatureInput)
     },
     handleConvert(){
