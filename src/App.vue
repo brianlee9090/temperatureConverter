@@ -90,6 +90,7 @@ export default {
     },
     handleNext(){
       document.getElementById("convert").focus()
+      this.handleConvert()
     }
     }
   }
