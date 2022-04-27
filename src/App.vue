@@ -68,6 +68,7 @@ export default {
   methods: {
     handleInput(event){
       this.temperatureInput = event.target.value.trim()
+      console.log(this.temperatureInput)
     },
     handleConvert(){
       if (this.temperatureInput !== "" && this.unit === "℃"){
