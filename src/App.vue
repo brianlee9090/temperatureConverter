@@ -3,7 +3,7 @@
   <div id="background" class="dark:bg-slate-900">
     <div id="ui" class="md:w-3/5 mx-auto">
     <div class=" flex flex-col justify-center w-11/12 m-auto">
-      <div class="flex flex-row justify-around w-11/12 items-center mx-auto" >
+      <div class="flex flex-row justify-around w-11/12 items-center mx-auto mb-12" >
         <div class="w-3/5 justify-start">
         <p class="dark:text-slate-200 text-3xl font-extrabold  mx-auto text-left" id="title"> Temperature
         </p>
@@ -12,29 +12,29 @@
         <ToggleButton @dark-toggle="this.isDark = ($event)" class="justify-end items-center	mx-auto"/>
         </div>
       </div>
-      <div class="flex flex-row justify-center items-center	my-16 mx-0 w-full">
+      <div class="flex flex-row justify-center items-center sm:h-28 my-16 mx-0 w-full">
         <div class="shrink w-3/5 m-0">
           <label class="dark:text-slate-200">Result</label>
           <div class="h-16 w-full m-0" v-show="(!this.showResult)"></div>
           <div class="flex flex-row justify-start m-0 h-16 w-full m-0" v-show="(this.showResult)">
-          <p class="text-5xl w-full dark:text-slate-200"  v-show="this.showResult">{{this.temperature}}</p>
-          <p class="text-5xl w-full dark:text-slate-200"  v-show="this.showResult">{{this.unit}}</p>
+          <p class="text-5xl text-right w-full dark:text-slate-200"  v-show="this.showResult">{{this.temperature}}</p>
+          <p class="text-5xl text-center sm:text-left w-full dark:text-slate-200"  v-show="this.showResult">&nbsp;{{this.unit}}</p>
           </div>
         </div>
       </div>
-      <div class="flex flex-col justify-center w-full m-0">
-        <div class="flex flex-row justify-around items-center w-full m-0">
+      <div class="flex flex-col justify-center w-full mt-10">
+        <div class="flex flex-row justify-around items-center w-full m-0 mt-8 mb-2">
           <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0" >
             <label class="dark:text-slate-200 text-left">Input here</label>
-            <input class="w-5/5 border-b-2" @keyup.enter="onEnter" type="number" v-model="input" @input="handleInput">
+            <input class="h-11 w-5/5 rounded" @keyup.enter="onEnter" type="number" v-model="input" @input="handleInput">
           </div>
           <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0 ">
             <label class="text-left dark:text-slate-200">Unit</label>
-            <UnitList @unit-change="unit = $event" class="w-5/5"/>
+            <UnitList @unit-change="unit = $event" class="h-11 w-5/5"/>
           </div>
         </div>
-        <div>
-        <button id="convert" type="button" class="mt-3 w-11/12 h-8 text-white bg-blue-700 hover:bg-blue-800 focus:ring-3 focus:ring-blue-300 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="handleConvert">Convert</button>
+        <div class="mt-4">
+        <button id="convert" type="button" class="w-11/12 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-3 focus:ring-blue-300 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="handleConvert">Convert</button>
         </div>
       </div>
     </div>
