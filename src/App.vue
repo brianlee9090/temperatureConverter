@@ -13,12 +13,18 @@
         </div>
       </div>
       <div class="flex flex-row justify-center items-center sm:h-28 my-16 mx-0 w-full">
+        
         <div class="shrink w-3/5 m-0">
-          <label class="dark:text-slate-200">Result</label>
-          <div class="h-16 w-full m-0" v-show="(!this.showResult)"></div>
-          <div class="flex flex-row justify-start m-0 h-16 w-full m-0" v-show="(this.showResult)">
-          <p class="text-5xl text-right w-full dark:text-slate-200"  v-show="this.showResult">{{this.temperature}}</p>
-          <p class="text-5xl text-center sm:text-left w-full dark:text-slate-200"  v-show="this.showResult">&nbsp;{{this.unit}}</p>
+          <div class="h-24 w-full m-0 flex-col justify-center items-center" v-show="(!this.showResult)">
+            <div class="flex flex-row m-auto justify-center"><SearchIcon class="h-10 w-10 py-2 text-slate-500"/></div>
+            <div><p class="dark:text-slate-200">Please enter a temperature input and unit</p></div>
+          </div>
+          <div class="h-24 w-full m-0 flex-col justify-center items-center" v-show="(this.showResult)">
+            <label class="dark:text-slate-200 py-2">Result</label>
+            <div class="flex flex-row justify-start m-0 h-16 w-full m-0">
+            <p class="text-5xl text-right w-full dark:text-slate-200"  v-show="this.showResult">{{this.temperature}}</p>
+            <p class="text-5xl text-center sm:text-left w-full dark:text-slate-200"  v-show="this.showResult">&nbsp;{{this.unit}}</p>
+          </div>
           </div>
         </div>
       </div>
@@ -46,11 +52,13 @@
 <script>
 import ToggleButton from './components/ToggleButton.vue'
 import UnitList from './components/UnitList.vue'
+import { SearchIcon } from '@heroicons/vue/solid'
+
 
 export default {
   name: 'App',
   components: {
-    ToggleButton, UnitList
+    ToggleButton, UnitList, SearchIcon
   },
   
   data: ()=>({
