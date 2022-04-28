@@ -22,7 +22,6 @@ export default {
   },
   methods: {
     handleChange(){
-        console.log(this.selected, "value")
         this.$emit("unit-change", this.selected);
     },
     handleClick(){

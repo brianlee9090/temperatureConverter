@@ -27,7 +27,6 @@ export default {
         } else {
           this.toggleOn = false
         }
-        console.log("toggled!", document.getElementById("toggle").checked, this.toggleOn)
         this.$emit("dark-toggle", this.toggleOn);
     },
   }

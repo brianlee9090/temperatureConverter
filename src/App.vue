@@ -5,7 +5,7 @@
     <div class=" flex flex-col justify-center w-11/12 m-auto">
       <div class="flex flex-row justify-around w-11/12 items-center mx-auto mb-12" >
         <div class="w-3/5 justify-start">
-        <p class="dark:text-slate-200 text-3xl font-extrabold  mx-auto text-left" id="title"> Temperature
+        <p class="dark:text-slate-200 text-3xl font-extrabold  mx-auto text-left" id="title"> Temperature Converter
         </p>
         </div>
         <div class="w-2/5 justify-end items-center">
@@ -21,7 +21,7 @@
           </div>
           <div class="h-24 w-full m-0 flex-col justify-center items-center" v-show="(this.showResult)">
             <label class="dark:text-slate-200 py-2">Result</label>
-            <div class="flex flex-row justify-start m-0 h-16 w-full m-0">
+            <div class="flex flex-row justify-start m-0 h-16 w-full m-0 pt-2">
             <p class="text-5xl text-right w-full dark:text-slate-200"  v-show="this.showResult">{{this.temperature}}</p>
             <p class="text-5xl text-center sm:text-left w-full dark:text-slate-200"  v-show="this.showResult">&nbsp;{{this.unit}}</p>
           </div>
@@ -31,11 +31,11 @@
       <div class="flex flex-col justify-center w-full mt-10">
         <div class="flex flex-row justify-around items-center w-full m-0 mt-8 mb-2">
           <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0" >
-            <label class="dark:text-slate-200 text-left">Input</label>
+            <label class="dark:text-slate-200 text-left pb-0.5">Input</label>
             <input class="h-11 w-5/5 rounded" @keyup.enter="onEnter" type="number" v-model="input" @input="handleInput">
           </div>
           <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0 ">
-            <label class="text-left dark:text-slate-200">Unit</label>
+            <label class="text-left dark:text-slate-200 pb-0.5">Unit</label>
             <UnitList @unit-change="unit = $event" class="h-11 w-5/5"/>
           </div>
         </div>
