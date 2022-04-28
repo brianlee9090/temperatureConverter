@@ -16,8 +16,8 @@
         
         <div class="shrink w-3/5 m-0">
           <div class="h-24 w-full m-0 flex-col justify-center items-center" v-show="(!this.showResult)">
-            <div class="flex flex-row m-auto justify-center"><SearchIcon class="h-10 w-10 py-2 text-slate-500"/></div>
-            <div><p class="dark:text-slate-200">Please enter a temperature input and unit</p></div>
+            <div class="flex flex-row m-auto justify-center"><LightBulbIcon class="h-10 w-10 py-2 text-slate-500"/></div>
+            <div><p class="italic text-gray-400 dark:text-slate-200">1. enter temperature <br> 2. select unit <br> 3. press convert button</p></div>
           </div>
           <div class="h-24 w-full m-0 flex-col justify-center items-center" v-show="(this.showResult)">
             <label class="dark:text-slate-200 py-2">Result</label>
@@ -31,7 +31,7 @@
       <div class="flex flex-col justify-center w-full mt-10">
         <div class="flex flex-row justify-around items-center w-full m-0 mt-8 mb-2">
           <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0" >
-            <label class="dark:text-slate-200 text-left">Input here</label>
+            <label class="dark:text-slate-200 text-left">Input</label>
             <input class="h-11 w-5/5 rounded" @keyup.enter="onEnter" type="number" v-model="input" @input="handleInput">
           </div>
           <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0 ">
@@ -52,17 +52,16 @@
 <script>
 import ToggleButton from './components/ToggleButton.vue'
 import UnitList from './components/UnitList.vue'
-import { SearchIcon } from '@heroicons/vue/solid'
-
+import { LightBulbIcon } from '@heroicons/vue/outline'
 
 export default {
   name: 'App',
   components: {
-    ToggleButton, UnitList, SearchIcon
+    ToggleButton, UnitList, LightBulbIcon
   },
   
   data: ()=>({
-    temperature: "--",
+    temperature: "",
     unit: "",
     input:"",
     temperatureInput: "",

@@ -1,7 +1,7 @@
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
-  purge: [
+  content: [
     "./public/**/index.html",
     "./public/index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
