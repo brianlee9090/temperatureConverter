@@ -74,7 +74,7 @@ export default {
        this.onEnter()
     }
      this.temperatureInput = event.target.value.trim()
-      console.log(this.temperatureInput)
+     this.showResult = false
     },
     handleConvert(){
       if (this.temperatureInput !== "" && this.unit === "℃"){
@@ -94,11 +94,10 @@ export default {
       }
       },
     onEnter(){
-      document.getElementById("unitList").click();
+      document.getElementById("unitList").focus();
     },
     handleNext(){
       document.getElementById("convert").focus()
-      this.handleConvert()
     }
     }
   }
