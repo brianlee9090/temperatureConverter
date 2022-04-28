@@ -2,13 +2,9 @@
     
 <div class="flex items-center justify-end w-full">
   <label for="toggle" class="flex items-center cursor-pointer">
-    <!-- toggle -->
     <div class="relative">
-      <!-- input -->
       <input type="checkbox" id="toggle" class="sr-only" @change="handleToggle">
-      <!-- line -->
       <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
-      <!-- dot -->
       <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"><p>☽</p></div>
     </div>
     
