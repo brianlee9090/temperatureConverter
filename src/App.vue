@@ -1,51 +1,54 @@
 <template>
   <div :class="isDark ? 'dark' : ''">
-  <div id="background" class="dark:bg-slate-900">
-    <div id="ui" class="md:w-3/5 mx-auto">
-    <div class=" flex flex-col justify-center w-11/12 m-auto">
-      <div class="flex flex-row justify-around w-11/12 items-center mx-auto mb-12" >
-        <div class="w-3/5 justify-start">
-        <p class="dark:text-slate-200 text-3xl font-extrabold  mx-auto text-left" id="title"> Temperature
-        </p>
-        </div>
-        <div class="w-2/5 justify-end items-center">
-        <ToggleButton @dark-toggle="this.isDark = ($event)" class="justify-end items-center	mx-auto"/>
-        </div>
-      </div>
-      <div class="flex flex-row justify-center items-center sm:h-28 my-16 mx-0 w-full">
-        
-        <div class="shrink w-3/5 m-0">
-          <div class="h-24 w-full m-0 flex-col justify-center items-center" v-show="(!this.showResult)">
-            <div class="flex flex-row m-auto justify-center"><LightBulbIcon class="h-10 w-10 py-2 text-slate-500"/></div>
-            <div><p class="italic text-gray-400 dark:text-slate-200">1. enter temperature <br> 2. select unit <br> 3. press convert button</p></div>
+    <div id="background" class="dark:bg-slate-900">
+      <div id="ui" class="md:w-3/5 mx-auto">
+        <div class=" flex flex-col justify-center w-11/12 m-auto">
+          
+          <div class="flex flex-row justify-around w-11/12 items-center mx-auto mb-12" >
+            <div class="w-3/5 justify-start">
+              <p class="dark:text-slate-200 text-3xl font-extrabold  mx-auto text-left" id="title"> Temperature Converter
+              </p>
+            </div>
+            <div class="w-2/5 justify-end items-center">
+              <ToggleButton @dark-toggle="this.isDark = ($event)" class="justify-end items-center	mx-auto"/>
+            </div>
           </div>
-          <div class="h-24 w-full m-0 flex-col justify-center items-center" v-show="(this.showResult)">
-            <label class="dark:text-slate-200 py-2">Result</label>
-            <div class="flex flex-row justify-start m-0 h-16 w-full m-0">
-            <p class="text-5xl text-right w-full dark:text-slate-200"  v-show="this.showResult">{{this.temperature}}</p>
-            <p class="text-5xl text-center sm:text-left w-full dark:text-slate-200"  v-show="this.showResult">&nbsp;{{this.unit}}</p>
+
+          <div class="flex flex-row justify-center items-center sm:h-28 my-16 mx-0 w-full">
+            <div class="shrink w-3/5 m-0">
+              <div class="h-24 w-full m-0 flex-col justify-center items-center" v-show="(!this.showResult)">
+                <div class="flex flex-row m-auto justify-center"><LightBulbIcon class="h-10 w-10 py-2 text-slate-500"/></div>
+                <div><p class="italic text-gray-400 dark:text-slate-200">1. enter temperature <br> 2. select unit <br> 3. tap convert button</p></div>
+              </div>
+              <div class="h-24 w-full m-0 flex-col justify-center items-center" v-show="(this.showResult)">
+                <label class="dark:text-slate-200 py-2">Result</label>
+                <div class="flex flex-row justify-start m-0 h-16 w-full m-0 pt-2">
+                  <p class="text-5xl text-right w-full dark:text-slate-200"  v-show="this.showResult">{{this.temperature}}</p>
+                  <p class="text-5xl text-center sm:text-left w-full dark:text-slate-200"  v-show="this.showResult">&nbsp;{{this.unit}}</p>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <div class="flex flex-col justify-center w-full mt-10">
+            <div class="flex flex-row justify-around items-center w-full m-0 mt-8 mb-2">
+              <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0" >
+                <label class="dark:text-slate-200 text-left pb-0.5">Input</label>
+                <input class="h-11 w-5/5 rounded" @keyup.enter="onEnter" type="number" v-model="input" @input="handleInput">
+              </div>
+              <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0 ">
+                <label class="text-left dark:text-slate-200 pb-0.5">Unit</label>
+                <UnitList @unit-change="unit = $event" class="h-11 w-5/5"/>
+              </div>
+            </div>
+            <div  class="mt-4">
+              <button  type="button" id="convert" class="w-11/12 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-3 focus:ring-blue-300 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="handleConvert">Convert</button>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="flex flex-col justify-center w-full mt-10">
-        <div class="flex flex-row justify-around items-center w-full m-0 mt-8 mb-2">
-          <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0" >
-            <label class="dark:text-slate-200 text-left">Input</label>
-            <input class="h-11 w-5/5 rounded" @keyup.enter="onEnter" type="number" v-model="input" @input="handleInput">
-          </div>
-          <div class="flex flex-col justify-start flex-nowrap w-2/5 m-0 ">
-            <label class="text-left dark:text-slate-200">Unit</label>
-            <UnitList @unit-change="unit = $event" class="h-11 w-5/5"/>
-          </div>
-        </div>
-        <div class="mt-4">
-        <button id="convert" type="button" class="w-11/12 h-12 text-white bg-blue-700 hover:bg-blue-800 focus:ring-3 focus:ring-blue-300 font-medium rounded-lg text-sm dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" @click="handleConvert">Convert</button>
+
         </div>
       </div>
     </div>
-    </div>
-  </div>
   </div>
 </template>
 
@@ -91,7 +94,6 @@ export default {
       if (this.temperatureInput !== "" &&  this.unit === "℉"){
       this.temperature = ((this.temperatureInput * 9/5)+32).toFixed(1)
       this.showResult = true;
-      console.log(this.isDark, "isDark")
       }
     },
     checkUnit(){
@@ -104,7 +106,7 @@ export default {
       document.getElementById("unitList").focus();
     },
     handleNext(){
-      document.getElementById("convert").focus()
+      document.getElementById("convert").click()
     }
     }
   }

@@ -4,9 +4,8 @@
       <option @click="handleClick" v-for="unit in units" :key="unit.name" :id="unit.name" :value="unit.value" >
         <a id="celsius" class="block px-4 py-2">{{unit.name}}</a>
       </option>
-
     </select>
-</div>
+  </div>
 </template>
 
 <script>
@@ -22,7 +21,6 @@ export default {
   },
   methods: {
     handleChange(){
-        console.log(this.selected, "value")
         this.$emit("unit-change", this.selected);
     },
     handleClick(){

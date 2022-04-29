@@ -7,7 +7,6 @@
       <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
       <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"><p>☽</p></div>
     </div>
-    
   </label>
 </div>
 </template>
@@ -27,7 +26,6 @@ export default {
         } else {
           this.toggleOn = false
         }
-        console.log("toggled!", document.getElementById("toggle").checked, this.toggleOn)
         this.$emit("dark-toggle", this.toggleOn);
     },
   }
